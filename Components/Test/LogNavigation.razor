@@ -8,20 +8,24 @@
 <a href="navtest?id=@(Id-1)">prev</a>
 <a href="navtest?id=@(Id+1)">next</a>
 
-<h3>Links without Enhanced Navigation</h3>
+<h3>NavigateTo</h3>
 
-<a href="navtest?id=@(Id-1)" data-enhance-nav="false">prev</a>
-<a href="navtest?id=@(Id+1)" data-enhance-nav="false">next</a>
+<button @onclick="() => NavigateTo(Id-1, forceLoad:false)">prev</button>
+<button @onclick="() => NavigateTo(Id+1, forceLoad:false)">next</button>
 
 <h3>NavLink</h3>
 
 <NavLink href="@($"navtest?id={Id-1}")">prev</NavLink>
 <NavLink href="@($"navtest?id={Id+1}")">next</NavLink>
 
-<h3>NavigateTo</h3>
+<hr/>
 
-<button @onclick="() => NavigateTo(Id-1, forceLoad:false)">prev</button>
-<button @onclick="() => NavigateTo(Id+1, forceLoad:false)">next</button>
+<h2>Full Page Reloads</h2>
+
+<h3>Links without Enhanced Navigation</h3>
+
+<a href="navtest?id=@(Id-1)" data-enhance-nav="false">prev</a>
+<a href="navtest?id=@(Id+1)" data-enhance-nav="false">next</a>
 
 <h3>NavigateTo forceLoad</h3>
 
@@ -52,8 +56,6 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        await base.OnParametersSetAsync();
-
         Id = QueryHelpers.ParseQuery(new Uri(NavigationManager.Uri).Query).TryGetValue("id", out var id)
             ? int.Parse(id!)
             : 0;
