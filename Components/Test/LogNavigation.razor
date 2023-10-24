@@ -47,7 +47,7 @@
 
     private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        Log.LogInformation($"HandleLocationChanged {e.Location} :: {NavigationManager.Uri}");
+        Log.LogInformation("HandleLocationChanged: {Location}, Uri= {Uri}", e.Location, NavigationManager.Uri);
         base.InvokeAsync(async () =>
         {
             await OnParametersSetAsync();
