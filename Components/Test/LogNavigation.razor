@@ -31,7 +31,8 @@
 @code {
     [Inject] ILogger<LogNavigation> Log { get; set; }
     [Inject] public NavigationManager NavigationManager { get; set; }
-    [Parameter] public int Id { get; set; }
+    
+    private int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
