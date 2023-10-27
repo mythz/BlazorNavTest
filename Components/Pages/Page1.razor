@@ -1,0 +1,18 @@
+﻿@page "/page1"
+
+<PageTitle>Page 1</PageTitle>
+
+<h1>Page 1</h1>
+<div id="page1-content" data-load="#page1-template"></div>
+
+<template id="page1-template">
+    <h2 class="text-danger">Page 1 Template</h2>
+    <p>
+        go to <a href="page2">page 2</a>
+    </p>
+</template>
+
+<script type="module">
+import { load } from "./app.mjs"
+load()
+</script>
